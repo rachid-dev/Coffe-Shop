@@ -1,17 +1,26 @@
 import styled from 'styled-components'
 
 const CartContainer = styled.div`
+    width : 200px;
     display : block flow;
-    padding: 32px;
-    margin-right : 100px; 
+    padding: 35px;
+    margin-right : 50px; 
     color: white;
     background-color: #31b572;
     `
 
-const Cart = () => {
+const StyledSpan = styled.span`
+    font-size : 15px;
+    `
+
+const Cart = ({ cart, updateCart }) => {
     return(
         <CartContainer>
-            <h1>Mon Panier</h1>
+            {
+                cart.map(({id, name, price, amount}) => (
+                    <StyledSpan key ={id} > {`${name}   ${price}`} {amount > 0 && ` x ${amount}` } <br /> <br /> </StyledSpan>
+                ))
+            }
         </CartContainer>
     )
 }

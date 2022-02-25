@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const ProductContainer = styled.li`
-    margin: 10px;
+const ProductContainer = styled.div`
+    margin: 15px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
