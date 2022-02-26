@@ -13,21 +13,21 @@ export const productList = [
     },
     {
         id : 2,
-        name : "Café moullu Grand-Mère",
+        name : "Grand-Mère",
         picture : cafe_grand_mere,
         price : '44 800',
         amount : 0
     },
     {
         id : 3,
-        name : "Café Réné",
+        name : "Réné",
         picture : cafe_rene,
         price : '75 000',
         amount : 0
     },
     {
         id : 4,
-        name : "Café Senseo",
+        name : "Senseo",
         picture : cafe_senseo,
         price : '75 600',
         amount : 0

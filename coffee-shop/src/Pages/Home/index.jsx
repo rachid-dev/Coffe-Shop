@@ -4,15 +4,16 @@ import ShoppingList from '../../Components/ShoppingList';
 import { useState } from 'react';
 
 const HomeContainer = styled.div`
-  display : flex;
+  display : ${({isOpen}) => (isOpen ? 'flex':'')};
   `
 
 function Home() {
   const [cart, updateCart] = useState([])
+  const [isOpen, setIsOpen] = useState(true)
 
   return (
-    <HomeContainer >
-      <Cart cart = {cart} updateCart = {updateCart} />
+    <HomeContainer isOpen = {isOpen} >
+      <Cart cart = {cart} updateCart = {updateCart} isOpen={isOpen} setIsOpen = {setIsOpen} />
       <ShoppingList cart = {cart} updateCart = {updateCart} />
     </HomeContainer>
   );

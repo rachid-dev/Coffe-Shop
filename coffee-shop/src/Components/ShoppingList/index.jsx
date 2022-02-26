@@ -21,7 +21,7 @@ const Button = styled.button`
 const ProductList = styled.ul`
     list-style-type: none;
     padding: 35px;
-    display: flex;
+    display: inline flex;
     flex-wrap: wrap;
     justify-content: center;
 `
@@ -34,12 +34,10 @@ const ShoppingList = ( { cart, updateCart }) => {
         
         //if the product doesn't exists
         if(!product){
+            newProduct.amount +=1
             updateCart([...cart, newProduct])
         }
         else{
-            // const filtredCart = cart.filter( cartProduct => cartProduct.name !== product.name)
-            // product.amount += 1
-
             const cartCopy = cart
             const index = cartCopy.indexOf(product)
             cartCopy[index].amount +=1

@@ -10,9 +10,9 @@ const ProductContainer = styled.div`
     position: relative;
     `
 
-const ProductInfo = styled.p`
-    text-align : center;
-    `
+// const ProductInfo = styled.p`
+//     text-align : center;
+//     `
 
 const StyledImg = styled.img`
     height: 250px;
