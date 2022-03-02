@@ -3,12 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './Pages/Home';
 import reportWebVitals from './reportWebVitals';
-import Header from './Components/Header'
+import { CartProvider } from './utils/Context';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Results from './Pages/Results';
+
+
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header />
-    <Home />
+    <Router>
+      <CartProvider>
+        <Routes>
+          <Route path='/' element = {<Home />} />
+          <Route path='/results/:results' element = {<Results />} />
+        </Routes>
+      </CartProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

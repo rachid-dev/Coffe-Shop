@@ -5,7 +5,7 @@ const Title = styled.h1`
     `
 const HeaderContainer = styled.div`
     display : block flow;
-    border : 2px solid black ;
+    border-bottom : 2px solid black ;
     padding : 20px;
     
     `

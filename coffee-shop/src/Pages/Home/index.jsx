@@ -1,21 +1,46 @@
 import styled from 'styled-components';
 import Cart from '../../Components/Cart';
 import ShoppingList from '../../Components/ShoppingList';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { cartContext } from '../../utils/Context';
+import Header from '../../Components/Header'
+
 
 const HomeContainer = styled.div`
   display : ${({isOpen}) => (isOpen ? 'flex':'')};
   `
+const convertMonthToNumber = (valueToConvert) => {
+  const monthsInLetter = ['Jan','Feb','Mar','Apr','May','Jun',
+                             'Jul','Aug','Sep','Oct','Nov','Dec']
+
+  const monthsInNumber = ['01','02','03','04','05','06',
+                             'O7','08','09','10','11','12']
+  for (let index = 0; index < monthsInLetter.length; index++) {
+      if ( monthsInLetter[index]===valueToConvert ){
+          return monthsInNumber[index]
+      }
+           
+  }
+}
+const [monthInLetter, day, year] = Date().substring(4,15).split(' ')
+const month = convertMonthToNumber(monthInLetter)
 
 function Home() {
-  const [cart, updateCart] = useState([])
-  const [isOpen, setIsOpen] = useState(true)
 
+  const { isOpen } = useContext(cartContext)
+  const [clientName, setClientName] = useState('HOTEL ONOMO')
+  const [deliveryDate, setDeliveryDate] = useState(`${year}-${month}-${day}`)
+
+  
   return (
-    <HomeContainer isOpen = {isOpen} >
-      <Cart cart = {cart} updateCart = {updateCart} isOpen={isOpen} setIsOpen = {setIsOpen} />
-      <ShoppingList cart = {cart} updateCart = {updateCart} />
-    </HomeContainer>
+    <div>
+      <Header />
+      <HomeContainer isOpen = { isOpen } >
+        <Cart clientName ={clientName} deliveryDate={deliveryDate} />
+        <ShoppingList setClientName ={setClientName} setDeliveryDate={setDeliveryDate} />
+      </HomeContainer>
+    </div>
+
   );
 }
 

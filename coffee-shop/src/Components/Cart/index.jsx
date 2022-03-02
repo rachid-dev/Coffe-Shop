@@ -1,5 +1,9 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import styled from 'styled-components'
+import { cartContext } from '../../utils/Context'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+
 
 const CartContainer = styled.div`
     width : 260px;
@@ -18,11 +22,12 @@ const StyledLi = styled.li`
     `
 
 const Button = styled.button`
-    align-items: start;`
+    align-items: start;
+    `
 
-const Cart = ({ cart, updateCart, isOpen, setIsOpen }) => {
-    
-
+const Cart = ({clientName, deliveryDate}) => {
+    const { cart, updateCart, isOpen, setIsOpen} = useContext(cartContext)
+    const results = { cart, clientName, deliveryDate }
     let total = 0
 
     const addProduct = (name) => {
@@ -71,6 +76,8 @@ const Cart = ({ cart, updateCart, isOpen, setIsOpen }) => {
                             <div>
                                 <span>{`Total =   ${total} FCFA`} <br /> <br /></span>
                                 <button onClick={() => updateCart([])}>Vider le panier</button>
+                                {`   `}
+                                <Link to= {`/results/${JSON.stringify(results)}`} ><button >Valider</button></Link>
                             </div>
                         ):(
                             <span> Votre panier est vide</span>
@@ -82,5 +89,12 @@ const Cart = ({ cart, updateCart, isOpen, setIsOpen }) => {
         )
     )
 }
+
+Cart.propTypes={
+    clientName : PropTypes.string.isRequired,
+    deliveryDate : PropTypes.string.isRequired
+}
+
+
 export default Cart;
 
